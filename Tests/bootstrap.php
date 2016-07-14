@@ -1,9 +1,9 @@
 <?php
 // Register composer autoloader
 if (!file_exists(__DIR__ . '/../vendor/autoload.php')) {
-	throw new \RuntimeException(
-		'Could not find vendor/autoload.php, make sure you ran composer.'
-	);
+    throw new \RuntimeException(
+        'Could not find vendor/autoload.php, make sure you ran composer.'
+    );
 }
 
 /** @var Composer\Autoload\ClassLoader $autoloader */
@@ -16,12 +16,12 @@ $autoloader->addPsr4('TYPO3\\CMS\\Fluid\\', __DIR__ . '/../vendor/typo3/cms/typo
 $autoloader->addPsr4('TYPO3\\CMS\\Frontend\\', __DIR__ . '/../vendor/typo3/cms/typo3/sysext/frontend/Classes/');
 
 \FluidTYPO3\Development\Bootstrap::initialize(
-	$autoloader,
-	array(
-		'cache_core' => \FluidTYPO3\Development\Bootstrap::CACHE_PHP_NULL,
-		'extbase_object' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
-		'extbase_datamapfactory_datamap' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
-		'extbase_typo3dbbackend_tablecolumns' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
-		'extbase_typo3dbbackend_queries' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
-	)
+    $autoloader,
+    array(
+        'cache_core' => \FluidTYPO3\Development\Bootstrap::CACHE_PHP_NULL,
+        'extbase_object' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
+        'extbase_datamapfactory_datamap' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
+        'extbase_typo3dbbackend_tablecolumns' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
+        'extbase_typo3dbbackend_queries' => \FluidTYPO3\Development\Bootstrap::CACHE_NULL,
+    )
 );
