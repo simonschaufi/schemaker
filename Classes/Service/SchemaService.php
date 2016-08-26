@@ -225,7 +225,6 @@ class SchemaService implements SingletonInterface
 
             $this->addAttributes($className, $xsdComplexType, $enablePhpTypes, $enableDocumentation);
         }
-
     }
 
     /**
