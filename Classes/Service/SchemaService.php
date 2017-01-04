@@ -79,7 +79,9 @@ class SchemaService implements SingletonInterface
     public function __construct()
     {
         // We want ViewHelper argument documentation
-        Fluid::$debugMode = true;
+        if (class_exists(Fluid::class)) {
+            Fluid::$debugMode = true;
+	}
         $this->abstractViewHelperReflectionClass = new ClassReflection(AbstractViewHelper::class);
     }
 
