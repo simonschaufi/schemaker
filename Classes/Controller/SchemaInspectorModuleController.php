@@ -130,7 +130,7 @@ class SchemaInspectorModuleController extends SchemaController
         $segments = array($p1, $p2, $p3, $p4, $p5);
         $segments = $this->trimPathSegments($segments);
 
-        $arguments = $this->segmentsToArguments($extensionKey, $segments);
+        $arguments = $this->segmentsToArguments($extensionKey, '', $segments);
         $extensionName = GeneralUtility::underscoredToUpperCamelCase($legacyExtensionKey);
         $extensionKeys = $this->detectExtensionsContainingViewHelpers();
         ;
@@ -249,10 +249,11 @@ class SchemaInspectorModuleController extends SchemaController
 
     /**
      * @param string $extensionKey
+     * @param string $version
      * @param array $segments
      * @return array
      */
-    protected function segmentsToArguments($extensionKey, $segments)
+    protected function segmentsToArguments($extensionKey, $version, $segments)
     {
         $arguments = array(
             'extensionKey' => $extensionKey,
