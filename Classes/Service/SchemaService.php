@@ -106,8 +106,9 @@ class SchemaService implements SingletonInterface
             );
             if (class_exists($className)) {
                 $parent = $className;
+                array_push($allViewHelperClassNames, $className);
                 while ($parent = get_parent_class($parent)) {
-                    array_push($allViewHelperClassNames, $className);
+                    array_push($allViewHelperClassNames, $parent);
                 }
             }
         }
