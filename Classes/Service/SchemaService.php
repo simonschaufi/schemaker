@@ -15,7 +15,6 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Extbase\Reflection\ClassReflection;
 use TYPO3\CMS\Extbase\Reflection\DocCommentParser;
 use TYPO3\CMS\Extbase\Reflection\ReflectionService;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Fluid\Core\ViewHelper\ArgumentDefinition;
 use TYPO3\CMS\Fluid\Fluid;
 
@@ -80,9 +79,16 @@ class SchemaService implements SingletonInterface
     {
         // We want ViewHelper argument documentation
         if (class_exists(Fluid::class)) {
+            // TODO: Remove when TYPO3 7 is no longer supported
             Fluid::$debugMode = true;
-	}
-        $this->abstractViewHelperReflectionClass = new ClassReflection(AbstractViewHelper::class);
+	    }
+	    // Todo: Remove check when TYPO3 7 is no longer supported
+	    if (class_exists(\TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class)) {
+            $abstractClass = \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::class;
+        } else {
+            $abstractClass = \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::class;
+        }
+        $this->abstractViewHelperReflectionClass = new ClassReflection($abstractClass);
     }
 
     /**
@@ -105,11 +111,7 @@ class SchemaService implements SingletonInterface
                 $filePathAndFilename
             );
             if (class_exists($className)) {
-                $parent = $className;
-                array_push($allViewHelperClassNames, $className);
-                while ($parent = get_parent_class($parent)) {
-                    array_push($allViewHelperClassNames, $parent);
-                }
+                $allViewHelperClassNames[] = $className;
             }
         }
         $affectedViewHelperClassNames = array();
