@@ -3,7 +3,8 @@
     "description": "The schemaker package from FluidTYPO3",
     "type": "typo3-cms-extension",
     "require": {
-        "fluidtypo3/vhs": "*"
+        "fluidtypo3/vhs": "*",
+        "typo3/cms": "^7.6|^8.7"
     },
     "require-dev": {
         "fluidtypo3/development": "^3.0"
