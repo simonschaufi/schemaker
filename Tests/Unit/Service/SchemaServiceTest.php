@@ -9,13 +9,13 @@ namespace FluidTYPO3\Schemaker\Tests\Unit\Service;
  */
 
 use FluidTYPO3\Schemaker\Service\SchemaService;
-use TYPO3\CMS\Core\Tests\UnitTestCase;
+use FluidTYPO3\Development\AbstractTestCase;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class SchemaServiceTest
  */
-class SchemaServiceTest extends UnitTestCase
+class SchemaServiceTest extends AbstractTestCase
 {
 
     /**
